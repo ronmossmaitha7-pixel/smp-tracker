@@ -1,12 +1,22 @@
-﻿# SMP Tracker
+﻿### SMP Tracker | Daily Performance & AI Coaching Tool
 
-A Python-based daily wellness and performance tracker that evaluates sleep, hydration, and daily goals to generate tailored coaching feedback.
+Tracking daily recovery habits and performance goals with automated coaching insights.
 
-## Features
-- **Daily Input Tracking:** Logs sleep hours, water intake, and goal completion.
-- **Smart Coaching Feedback:** Analyzes daily habits against healthy thresholds (7+ hours of sleep and 8+ glasses of water) to deliver actionable next steps.
+#### What It Does
+- Logs daily sleep hours, hydration levels, and workout or goal performance
+- Evaluates habits against healthy baselines (7+ hours of sleep and 8+ glasses of water)
+- Identifies performance bottlenecks and generates tailored coaching feedback
+- Simulates AI-powered coaching responses based on daily habit combinations
 
-## How to Run
+#### Key Components
+- **Habit Threshold Engine:** Evaluates sleep, hydration, and goal completion states
+- **Coaching Matrix:** Maps 8 distinct habit combinations to targeted recovery advice
+- **CLI Workflow:** Interactive terminal tracker built in pure Python
+
+#### Stack
+Python • Git • GitHub
+
+#### How to Run
 ```bash
 python smp_tracker.py
 ```
