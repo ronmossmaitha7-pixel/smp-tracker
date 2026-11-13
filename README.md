@@ -1,5 +1,10 @@
-﻿### SMP Tracker | Daily Performance & AI Coaching Tool
+﻿### Ronmoss Maitha Katana | Python Developer | Automation & AI Tools
 
+Building practical tools that solve actual problems.
+
+---
+
+#### Project: SMP Tracker
 Tracking daily recovery habits and performance goals with automated coaching insights.
 
 #### What It Does
