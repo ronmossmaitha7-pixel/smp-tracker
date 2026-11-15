@@ -4,26 +4,33 @@ st.title("SMP Tracker")
 st.caption("Daily Performance & AI Coaching Tool")
 
 name = st.text_input("Type in your name")
-sleep = st.slider("How many hours did you sleep?", 0, 12, 7)
-water = st.slider("How many glasses of water did you drink?", 0, 15, 8)
 protocol = st.selectbox(
     "Select your daily protocol",
-    ["Recovery & Hydration", "Deep Focus & Productivity", "Strength & Conditioning", "Custom Goal"]
+    ["2MAD (Two Meals a Day)", "OMAD (One Meal a Day)"]
 )
+sleep = st.slider("How many hours did you sleep?", 0, 12, 7)
+water = st.slider("How many glasses of water did you drink?", 0, 15, 8)
 goal_done = st.checkbox("Did you complete today's protocol target?")
 
 if st.button("Get Coaching"):
     st.subheader(f"Daily Report for {name or 'Athlete'}")
-    st.write(f"**Protocol:** {protocol}")
-    st.write(f"**Sleep:** {sleep} hrs | **Water:** {water} glasses | **Target Hit:** {'Yes' if goal_done else 'No'}")
+    st.write(f"**Protocol:** {protocol} | **Target Hit:** {'Yes' if goal_done else 'No'}")
+    st.write(f"**Sleep:** {sleep} hrs | **Water:** {water} glasses")
 
-    if sleep >= 7 and water >= 8 and goal_done:
-        st.success("Peak state! Sleep, hydration, and protocol are all locked in. Keep this momentum going.")
-    elif sleep < 7 and water < 8:
-        st.warning("Low fuel detected: Both sleep (<7h) and hydration (<8 glasses) are below baseline. Prioritize water now and an earlier bedtime tonight.")
-    elif sleep < 7:
-        st.info("Hydration is solid, but sleep is under 7 hours. Keep today's workload focused and protect your recovery window tonight.")
-    elif water < 8:
-        st.info("Good rest, but hydration is lagging (<8 glasses). Drink 2 glasses of water right now to sharpen focus.")
+    # Protocol-specific coaching tip
+    if protocol == "OMAD (One Meal a Day)":
+        if water < 10:
+            st.warning("OMAD Alert: Longer fasting windows demand extra hydration and electrolytes. Aim for at least 10 glasses of water today.")
+        else:
+            st.info("OMAD Protocol: Strong hydration for an extended fast. Make sure your single meal is nutrient-dense and protein-rich.")
     else:
-        st.info("Your physical baseline (sleep & water) is strong—lock in your remaining protocol task before wrapping up the day.")
+        if water < 8:
+            st.warning("2MAD Alert: Keep hydration at 8+ glasses between your two meals to prevent energy dips.")
+        else:
+            st.info("2MAD Protocol: Solid hydration across your eating window. Keep both meals balanced for steady energy.")
+
+    # Recovery & sleep feedback
+    if sleep >= 7 and goal_done:
+        st.success("Peak state! Recovery and protocol execution are both locked in.")
+    elif sleep < 7:
+        st.warning("Recovery Note: Sleep is under 7 hours. Prioritize an earlier bedtime tonight to protect fasting energy.")
